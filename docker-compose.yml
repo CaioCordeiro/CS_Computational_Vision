@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  Datascience:
+    image: datascience
+    container_name: datascience
+    build:
+        context: .
+        dockerfile: Dockerfile
+    restart: always
+    environment:
+       - TERM=xterm
+    hostname: '127.0.0.1'
+    ports:
+       - "8888:8888"         #JupyterNB
+    volumes:
+       - .:/root/datascience:Z
