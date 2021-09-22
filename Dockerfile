@@ -4,6 +4,9 @@ COPY requirements.txt /root/datascience/requirements.txt
 WORKDIR /root/datascience
 RUN pip3 install -r requirements.txt
 
+RUN apt-get update
+RUN apt-get install ffmpeg libsm6 libxext6  -y
+
 RUN jupyter notebook --generate-config --allow-root
 RUN echo "c.NotebookApp.password = u'sha1:6a3f528eec40:6e896b6e4828f525a6e20e5411cd1c8075d68619'" >> /root/.jupyter/jupyter_notebook_config.py
 
